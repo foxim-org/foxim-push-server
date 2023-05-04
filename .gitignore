@@ -1,0 +1,9 @@
+.DS_Store
+.env
+.nyc_output
+node_modules
+uploads/*
+!uploads/.gitkeep
+!uploads/test.json
+test-deploy.sh
+.mongo*
