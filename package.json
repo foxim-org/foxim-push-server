@@ -1,5 +1,5 @@
 {
-  "name": "chat node server",
+  "name": "foxim-push-server",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
