@@ -13,11 +13,11 @@ REDIS_PASSWORD=$REDIS_PASSWORD \
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 cd ~/server
-if [[ ! -d "chat-node-server" ]]; then
-  git clone git@github.com:zhongzhikeji/chat-node-server.git
-  cd chat-node-server
+if [[ ! -d "foxim-push-server" ]]; then
+  git clone https://github.com/foxim-org/foxim-push-server
+  cd foxim-push-server
 else
-  cd chat-node-server
+  cd foxim-push-server
   git fetch --all
   git reset --hard origin/main
 fi
@@ -34,7 +34,7 @@ REDIS_USERNAME=$REDIS_USERNAME
 REDIS_PASSWORD=$REDIS_PASSWORD
 EOT
 npm i
-pm2 delete chat-node-server
-pm2 start --name chat-node-server index.js
+pm2 delete foxim-push-server
+pm2 start --name foxim-push-server index.js
 pm2 save
 ENDSSH
