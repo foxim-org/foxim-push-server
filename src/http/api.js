@@ -29,7 +29,7 @@ module.exports = function ({ apiRouter, mongo, getInternalMqttClient }) {
 
     const token = at.toJwt()
 
-    return token
+    res.json({ token })
   })
 
   apiRouter.get('/health-check', function (req, res) {
