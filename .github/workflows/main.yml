@@ -27,6 +27,8 @@ env:
   REDIS_HOST: ${{ secrets.REDIS_HOST }}
   REDIS_PORT: ${{ secrets.REDIS_PORT }}
   REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+  LIVEKIT_KEY: ${{ secrets.LIVEKIT_KEY }}
+  LIVEKIT_SECRET: ${{ secrets.LIVEKIT_SECRET }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
