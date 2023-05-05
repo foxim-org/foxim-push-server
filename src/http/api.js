@@ -1,8 +1,35 @@
+const { AccessToken } = require('livekit-server-sdk')
+
+const { LIVEKIT_KEY, LIVEKIT_SECRET } = process.env
+
 module.exports = function ({ apiRouter, mongo, getInternalMqttClient }) {
   apiRouter.post('/publish', function (req, res) {
     const { topic, payload, options } = req.body
     getInternalMqttClient().publish(topic, JSON.stringify(payload), options || { qos: 1 })
     res.sendStatus(200)
+  })
+
+  apiRouter.post('/grant-livekit-token', function (req, res) {
+    const {
+      identity,
+      room,
+    } = req.body
+
+    const at = new AccessToken(LIVEKIT_KEY, LIVEKIT_SECRET, {
+      identity,
+    })
+
+    at.addGrant({
+      room,
+      roomCreate: true,
+      roomJoin: true,
+      canPublish: true,
+      canSubscribe: true,
+    })
+
+    const token = at.toJwt()
+
+    return token
   })
 
   apiRouter.get('/health-check', function (req, res) {
