@@ -1,9 +1,9 @@
-## CHAT NODE SERVER
+## FOXIM PUSH SERVER
 
 ### How to install
 
 ```bash
-git clone https://github.com/zhongzhikeji/chat-node-server
+git clone https://github.com/foxim-org/foxim-push-server
 cd
 npm i
 ````
@@ -16,20 +16,20 @@ npm run dev
 
 ### 文档
 
-开发模式可以访问 /docs
+> 开发模式可以访问
 
-### TODO
+http://$HOST:$PORT/docs
 
 ### ENV
 
 ```
-PORT=10888
-MQTT_MONGO_URL=mongodb://localhost:27017/test
-PERSISTENCE_TTL=600
-JWT_SECRET=test
-MQTT_SECRET_CLIENT_ID=test
-BROKER_ID=test
-REDIS_HOST=127.0.0.1
-REDIS_PORT=6379
-REDIS_PASSWORD=password
+PORT=
+MQTT_MONGO_URL=
+PERSISTENCE_TTL=
+JWT_SECRET=
+MQTT_SECRET_CLIENT_ID=
+REDIS_HOST=
+REDIS_PORT=
+REDIS_USERNAME=
+REDIS_PASSWORD=
 ```
