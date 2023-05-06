@@ -77,8 +77,8 @@ module.exports = function ({ aedes, mongo }) {
     }
 
     // legacy-save
-    if (message.type === 'agree') {
-      message.userId =  payload.userId
+    if (payload.type === 'agree') {
+      message.userId = payload.userId
     }
 
     delete message.groupName
@@ -86,10 +86,10 @@ module.exports = function ({ aedes, mongo }) {
 
     mongo.PrivateMessages.insertOne(message)
 
-    mongo.Contacts.updateOne({ userId: targetId, contactId: clientId }, { $inc: { msgCount: 1 } })
+    mongo.Contacts.updateOne({ userId: targetId, contactId: message.userId || clientId }, { $inc: { msgCount: 1 } })
 
     mongo.Contacts.updateMany({
-      $or: [{ userId: clientId, contactId: targetId }, { userId: targetId, contactId: clientId }]
+      $or: [{ userId: message.userId || clientId, contactId: targetId }, { userId: targetId, contactId: message.userId || clientId }]
     }, {
       $set: {
         recentAt: new Date(),
