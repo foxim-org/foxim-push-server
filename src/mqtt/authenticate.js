@@ -5,7 +5,6 @@ const {
 
 const { ObjectID } = require('mongodb')
 const { createVerifier } = require('fast-jwt')
-
 const verifySync = createVerifier({ key: Buffer.from(JWT_SECRET, 'base64') })
 
 module.exports = function ({ aedes, mongo }) {

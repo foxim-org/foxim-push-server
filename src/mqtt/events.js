@@ -1,7 +1,5 @@
-const ms = require('ms')
 const { ObjectID } = require('mongodb')
 
-const { privateQueue } = require('../queue/private')
 const { groupQueue } = require('../queue/group')
 const { myGroupQueue } = require('../queue/my-group')
 
@@ -76,6 +74,11 @@ module.exports = function ({ aedes, mongo }) {
       contactId: targetId,
       createdAt: new Date(),
       updatedAt: new Date(),
+    }
+
+    // legacy-save
+    if (message.type === 'agree') {
+      message.userId =  payload.userId
     }
 
     delete message.groupName
