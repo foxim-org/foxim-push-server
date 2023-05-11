@@ -64,6 +64,9 @@ module.exports = function ({ aedes, mongo }) {
         id: payload.id,
         //userId: clientId,
       })
+      
+      console.log('删除后', msg, {id: payload.id,
+        userId: clientId,})
 
       return
     }
