@@ -62,7 +62,7 @@ module.exports = function ({ aedes, mongo }) {
         userId: clientId,})
       const msg = await mongo.PrivateMessages.deleteOne({
         id: payload.id,
-        userId: clientId,
+        //userId: clientId,
       })
 
       return
