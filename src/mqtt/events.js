@@ -61,7 +61,7 @@ module.exports = function ({ aedes, mongo }) {
       console.log('删除', {id: payload.id,
         userId: clientId,})
       const msg = await mongo.PrivateMessages.deleteOne({
-        id: payload.id,
+        msgId: payload.msgId,
         //userId: clientId,
       })
       
@@ -116,7 +116,7 @@ module.exports = function ({ aedes, mongo }) {
     // 撤回
     // 同时撤回转发群？
     if (targetAction === 'unsend' || targetAction === 'recall') {
-      mongo.GroupMessages.deleteOne({ id: payload.id, userId: clientId })
+      mongo.GroupMessages.deleteOne({ id: payload.msgId, userId: clientId })
       return
     }
 
