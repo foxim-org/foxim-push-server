@@ -58,6 +58,8 @@ module.exports = function ({ aedes, mongo }) {
 
     // 撤回
     if (targetAction === 'unsend' || targetAction === 'recall') {
+      console.log('删除', {id: payload.id,
+        userId: clientId,})
       const msg = await mongo.PrivateMessages.deleteOne({
         id: payload.id,
         userId: clientId,
